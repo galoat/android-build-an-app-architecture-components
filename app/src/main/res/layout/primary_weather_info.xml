@@ -16,8 +16,8 @@
   -->
 
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  - This layout displays a given day's primary weather information, such as the date of the      -
-  - weather, an icon and description, and the high and low temperature.                          -
+  - This layout displays a given day's primary WeatherEntity information, such as the date of the      -
+  - WeatherEntity, an icon and description, and the high and low temperature.                          -
   -                                                                                              -
   - In order to use Android's data binding capabilities, (to avoid having to type findViewById   -
   - over and over again) we wrap this layout in a <layout></layout> tag.                         -
@@ -63,7 +63,7 @@
             app:layout_constraintRight_toRightOf="parent"
             tools:text="Saturday, September 24"/>
 
-        <!-- Icon indicating weather condition -->
+        <!-- Icon indicating WeatherEntity condition -->
         <ImageView
             android:id="@+id/weather_icon"
             android:layout_width="96dp"
@@ -75,7 +75,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/art_clouds"/>
 
-        <!-- Text that describes weather condition -->
+        <!-- Text that describes WeatherEntity condition -->
         <TextView
             android:id="@+id/weather_description"
             android:layout_width="wrap_content"

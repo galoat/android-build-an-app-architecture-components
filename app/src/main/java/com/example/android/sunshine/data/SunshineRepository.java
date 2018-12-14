@@ -79,14 +79,14 @@
 //     **/
 //
 //    /**
-//     * Deletes old weather data because we don't need to keep multiple days' data
+//     * Deletes old WeatherEntity data because we don't need to keep multiple days' data
 //     */
 //    private void deleteOldData() {
 //        // TODO Finish this method when instructed
 //    }
 //
 //    /**
-//     * Checks if there are enough days of future weather for the app to display all the needed data.
+//     * Checks if there are enough days of future WeatherEntity for the app to display all the needed data.
 //     *
 //     * @return Whether a fetch is needed
 //     */

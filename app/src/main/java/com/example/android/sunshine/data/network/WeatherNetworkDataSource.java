@@ -39,7 +39,7 @@ public class WeatherNetworkDataSource {
     public static final int NUM_DAYS = 14;
     private static final String LOG_TAG = WeatherNetworkDataSource.class.getSimpleName();
 
-    // Interval at which to sync with the weather. Use TimeUnit for convenience, rather than
+    // Interval at which to sync with the WeatherEntity. Use TimeUnit for convenience, rather than
     // writing out a bunch of multiplication ourselves and risk making a silly mistake.
     private static final int SYNC_INTERVAL_HOURS = 3;
     private static final int SYNC_INTERVAL_SECONDS = (int) TimeUnit.HOURS.toSeconds(SYNC_INTERVAL_HOURS);
@@ -73,7 +73,7 @@ public class WeatherNetworkDataSource {
     }
 
     /**
-     * Starts an intent service to fetch the weather.
+     * Starts an intent service to fetch the WeatherEntity.
      */
     public void startFetchWeatherService() {
         Intent intentToFetch = new Intent(mContext, SunshineSyncIntentService.class);
@@ -82,7 +82,7 @@ public class WeatherNetworkDataSource {
     }
 
     /**
-     * Schedules a repeating job service which fetches the weather.
+     * Schedules a repeating job service which fetches the WeatherEntity.
      */
     public void scheduleRecurringFetchWeatherSync() {
         Driver driver = new GooglePlayDriver(mContext);
@@ -107,11 +107,11 @@ public class WeatherNetworkDataSource {
                  */
                 .setLifetime(Lifetime.FOREVER)
                 /*
-                 * We want Sunshine's weather data to stay up to date, so we tell this Job to recur.
+                 * We want Sunshine's WeatherEntity data to stay up to date, so we tell this Job to recur.
                  */
                 .setRecurring(true)
                 /*
-                 * We want the weather data to be synced every 3 to 4 hours. The first argument for
+                 * We want the WeatherEntity data to be synced every 3 to 4 hours. The first argument for
                  * Trigger's static executionWindow method is the start of the time frame when the
                  * sync should be performed. The second argument is the latest point in time at
                  * which the data should be synced. Please note that this end time is not
@@ -134,15 +134,15 @@ public class WeatherNetworkDataSource {
     }
 
     /**
-     * Gets the newest weather
+     * Gets the newest WeatherEntity
      */
     void fetchWeather() {
-        Log.d(LOG_TAG, "Fetch weather started");
+        Log.d(LOG_TAG, "Fetch WeatherEntity started");
         mExecutors.networkIO().execute(() -> {
             try {
 
                 // The getUrl method will return the URL that we need to get the forecast JSON for the
-                // weather. It will decide whether to create a URL based off of the latitude and
+                // WeatherEntity. It will decide whether to create a URL based off of the latitude and
                 // longitude or off of a simple location as a String.
 
                 URL weatherRequestUrl = NetworkUtils.getUrl();
@@ -150,13 +150,13 @@ public class WeatherNetworkDataSource {
                 // Use the URL to retrieve the JSON
                 String jsonWeatherResponse = NetworkUtils.getResponseFromHttpUrl(weatherRequestUrl);
 
-                // Parse the JSON into a list of weather forecasts
+                // Parse the JSON into a list of WeatherEntity forecasts
                 WeatherResponse response = new OpenWeatherJsonParser().parse(jsonWeatherResponse);
                 Log.d(LOG_TAG, "JSON Parsing finished");
 
 
-                // As long as there are weather forecasts, update the LiveData storing the most recent
-                // weather forecasts. This will trigger observers of that LiveData, such as the
+                // As long as there are WeatherEntity forecasts, update the LiveData storing the most recent
+                // WeatherEntity forecasts. This will trigger observers of that LiveData, such as the
                 // SunshineRepository.
                 if (response != null && response.getWeatherForecast().length != 0) {
                     Log.d(LOG_TAG, "JSON not null and has " + response.getWeatherForecast().length

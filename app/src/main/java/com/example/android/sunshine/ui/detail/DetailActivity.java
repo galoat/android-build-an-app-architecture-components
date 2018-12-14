@@ -20,7 +20,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.android.sunshine.R;
-import com.example.android.sunshine.data.database.WeatherEntry;
 import com.example.android.sunshine.databinding.ActivityDetailBinding;
 import com.example.android.sunshine.utilities.SunshineDateUtils;
 import com.example.android.sunshine.utilities.SunshineWeatherUtils;
@@ -68,7 +67,7 @@ public class DetailActivity extends AppCompatActivity {
          * Weather Date *
          ****************/
         /*
-         * The date that is stored is a GMT representation at midnight of the date when the weather
+         * The date that is stored is a GMT representation at midnight of the date when the WeatherEntity
          * information was loaded for.
          *
          * When displaying this date, one must add the GMT offset (in milliseconds) to acquire
@@ -85,14 +84,14 @@ public class DetailActivity extends AppCompatActivity {
         /* Use the weatherId to obtain the proper description */
         String description = SunshineWeatherUtils.getStringForWeatherCondition(DetailActivity.this, weatherId);
 
-        /* Create the accessibility (a11y) String from the weather description */
+        /* Create the accessibility (a11y) String from the WeatherEntity description */
         String descriptionA11y = getString(R.string.a11y_forecast, description);
 
         /* Set the text and content description (for accessibility purposes) */
         mDetailBinding.primaryInfo.weatherDescription.setText(description);
         mDetailBinding.primaryInfo.weatherDescription.setContentDescription(descriptionA11y);
 
-        /* Set the content description on the weather image (for accessibility purposes) */
+        /* Set the content description on the WeatherEntity image (for accessibility purposes) */
         mDetailBinding.primaryInfo.weatherIcon.setContentDescription(descriptionA11y);
 
         /**************************
@@ -102,13 +101,13 @@ public class DetailActivity extends AppCompatActivity {
         double maxInCelsius = weatherEntry.getMax();
 
         /*
-         * If the user's preference for weather is fahrenheit, formatTemperature will convert
+         * If the user's preference for WeatherEntity is fahrenheit, formatTemperature will convert
          * the temperature. This method will also append either °C or °F to the temperature
          * String.
          */
         String highString = SunshineWeatherUtils.formatTemperature(DetailActivity.this, maxInCelsius);
 
-        /* Create the accessibility (a11y) String from the weather description */
+        /* Create the accessibility (a11y) String from the WeatherEntity description */
         String highA11y = getString(R.string.a11y_high_temp, highString);
 
         /* Set the text and content description (for accessibility purposes) */
@@ -121,7 +120,7 @@ public class DetailActivity extends AppCompatActivity {
 
         double minInCelsius = weatherEntry.getMin();
         /*
-         * If the user's preference for weather is fahrenheit, formatTemperature will convert
+         * If the user's preference for WeatherEntity is fahrenheit, formatTemperature will convert
          * the temperature. This method will also append either °C or °F to the temperature
          * String.
          */

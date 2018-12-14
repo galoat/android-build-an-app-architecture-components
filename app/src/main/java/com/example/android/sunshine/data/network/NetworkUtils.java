@@ -26,7 +26,7 @@ import java.net.URL;
 import java.util.Scanner;
 
 /**
- * These utilities will be used to communicate with the weather servers.
+ * These utilities will be used to communicate with the WeatherEntity servers.
  */
 final class NetworkUtils {
 
@@ -34,25 +34,25 @@ final class NetworkUtils {
 
     /*
      * Sunshine was originally built to use OpenWeatherMap's API. However, we wanted to provide
-     * a way to much more easily test the app and provide more varied weather data. After all, in
+     * a way to much more easily test the app and provide more varied WeatherEntity data. After all, in
      * Mountain View (Google's HQ), it gets very boring looking at a forecast of perfectly clear
      * skies at 75°F every day... (UGH!) The solution we came up with was to host our own fake
-     * weather server. With this server, there are two URL's you can use. The first (and default)
-     * URL will return dynamic weather data. Each time the app refreshes, you will get different,
-     * completely random weather data. This is incredibly useful for testing the robustness of your
-     * application, as different weather JSON will provide edge cases for some of your methods.
+     * WeatherEntity server. With this server, there are two URL's you can use. The first (and default)
+     * URL will return dynamic WeatherEntity data. Each time the app refreshes, you will get different,
+     * completely random WeatherEntity data. This is incredibly useful for testing the robustness of your
+     * application, as different WeatherEntity JSON will provide edge cases for some of your methods.
      *
      */
     private static final String DYNAMIC_WEATHER_URL =
-            "https://andfun-weather.udacity.com/weather";
+            "https://andfun-WeatherEntity.udacity.com/WeatherEntity";
 
     private static final String STATIC_WEATHER_URL =
-            "https://andfun-weather.udacity.com/staticweather";
+            "https://andfun-WeatherEntity.udacity.com/staticweather";
 
     private static final String FORECAST_BASE_URL = DYNAMIC_WEATHER_URL;
 
     /*
-     * NOTE: These values only effect responses from OpenWeatherMap, NOT from the fake weather
+     * NOTE: These values only effect responses from OpenWeatherMap, NOT from the fake WeatherEntity
      * server. They are simply here to allow us to teach you how to build a URL if you were to use
      * a real API. If you want to connect your app to OpenWeatherMap's API, feel free to! However,
      * we are not going to show you how to do so in this training.
@@ -71,13 +71,13 @@ final class NetworkUtils {
     private static final String FORMAT_PARAM = "mode";
     /* The units parameter allows us to designate whether we want metric units or imperial units */
     private static final String UNITS_PARAM = "units";
-    /* The days parameter allows us to designate how many days of weather data we want */
+    /* The days parameter allows us to designate how many days of WeatherEntity data we want */
     private static final String DAYS_PARAM = "cnt";
 
     /**
-     * Retrieves the proper URL to query for the weather data.
+     * Retrieves the proper URL to query for the WeatherEntity data.
      *
-     * @return URL to query weather service
+     * @return URL to query WeatherEntity service
      */
     static URL getUrl() {
         String locationQuery = "Mountain View, CA";
@@ -85,11 +85,11 @@ final class NetworkUtils {
     }
 
     /**
-     * Builds the URL used to talk to the weather server using a location. This location is based
-     * on the query capabilities of the weather provider that we are using.
+     * Builds the URL used to talk to the WeatherEntity server using a location. This location is based
+     * on the query capabilities of the WeatherEntity provider that we are using.
      *
      * @param locationQuery The location that will be queried for.
-     * @return The URL to use to query the weather server.
+     * @return The URL to use to query the WeatherEntity server.
      */
     private static URL buildUrlWithLocationQuery(String locationQuery) {
         Uri weatherQueryUri = Uri.parse(FORECAST_BASE_URL).buildUpon()

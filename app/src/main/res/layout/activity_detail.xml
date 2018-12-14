@@ -16,8 +16,8 @@
   -->
 
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  - This layout displays the complete details of a given day's weather, including the date, a    -
-  - weather icon and description, the high and low temperature, the humidity, pressure, and the  -
+  - This layout displays the complete details of a given day's WeatherEntity, including the date, a    -
+  - WeatherEntity icon and description, the high and low temperature, the humidity, pressure, and the  -
   - wind speed and direction.                                                                    -
   -                                                                                              -
   - In order to use Android's data binding capabilities, (to avoid having to type findViewById   -

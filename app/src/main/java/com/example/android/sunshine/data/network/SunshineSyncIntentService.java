@@ -35,6 +35,6 @@ public class SunshineSyncIntentService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         Log.d(LOG_TAG, "Intent service started");
-        // TODO Finish this method when instructed. Will eventually call the fetch weather code
+        // TODO Finish this method when instructed. Will eventually call the fetch WeatherEntity code
     }
 }

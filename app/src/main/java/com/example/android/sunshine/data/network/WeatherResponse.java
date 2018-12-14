@@ -17,10 +17,8 @@ package com.example.android.sunshine.data.network;
 
 import android.support.annotation.NonNull;
 
-import com.example.android.sunshine.data.database.WeatherEntry;
-
 /**
- * Weather response from the backend. Contains the weather forecasts.
+ * Weather response from the backend. Contains the WeatherEntity forecasts.
  */
 class WeatherResponse {
 

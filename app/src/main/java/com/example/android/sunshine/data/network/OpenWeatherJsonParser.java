@@ -17,7 +17,6 @@ package com.example.android.sunshine.data.network;
 
 import android.support.annotation.Nullable;
 
-import com.example.android.sunshine.data.database.WeatherEntry;
 import com.example.android.sunshine.utilities.SunshineDateUtils;
 
 import org.json.JSONArray;
@@ -47,7 +46,7 @@ final class OpenWeatherJsonParser {
     private static final String OWM_MAX = "max";
     private static final String OWM_MIN = "min";
 
-    private static final String OWM_WEATHER = "weather";
+    private static final String OWM_WEATHER = "WeatherEntity";
     private static final String OWM_WEATHER_ID = "id";
 
     private static final String OWM_MESSAGE_CODE = "cod";
@@ -78,7 +77,7 @@ final class OpenWeatherJsonParser {
          * OWM returns daily forecasts based upon the local time of the city that is being asked
          * for, which means that we need to know the GMT offset to translate this data properly.
          * Since this data is also sent in-order and the first day is always the current day, we're
-         * going to take advantage of that to get a nice normalized UTC date for all of our weather.
+         * going to take advantage of that to get a nice normalized UTC date for all of our WeatherEntity.
          */
         long normalizedUtcStartDay = SunshineDateUtils.getNormalizedUtcMsForToday();
 
@@ -86,7 +85,7 @@ final class OpenWeatherJsonParser {
             // Get the JSON object representing the day
             JSONObject dayForecast = jsonWeatherArray.getJSONObject(i);
 
-            // Create the weather entry object
+            // Create the WeatherEntity entry object
             long dateTimeMillis = normalizedUtcStartDay + SunshineDateUtils.DAY_IN_MILLIS * i;
             WeatherEntry weather = fromJson(dayForecast, dateTimeMillis);
 
@@ -106,8 +105,8 @@ final class OpenWeatherJsonParser {
         double windDirection = dayForecast.getDouble(OWM_WIND_DIRECTION);
 
 
-        // Description is in a child array called "weather", which is 1 element long.
-        // That element also contains a weather code.
+        // Description is in a child array called "WeatherEntity", which is 1 element long.
+        // That element also contains a WeatherEntity code.
         JSONObject weatherObject =
                 dayForecast.getJSONArray(OWM_WEATHER).getJSONObject(0);
 
@@ -119,17 +118,17 @@ final class OpenWeatherJsonParser {
         double max = temperatureObject.getDouble(OWM_MAX);
         double min = temperatureObject.getDouble(OWM_MIN);
 
-        // Create the weather entry object
+        // Create the WeatherEntity entry object
         return new WeatherEntry(weatherId, new Date(dateTimeMillis), max, min,
                 humidity, pressure, windSpeed, windDirection);
     }
 
     /**
      * This method parses JSON from a web response and returns an array of Strings
-     * describing the weather over various days from the forecast.
+     * describing the WeatherEntity over various days from the forecast.
      *
      * @param forecastJsonStr JSON response from server
-     * @return Array of Strings describing weather data
+     * @return Array of Strings describing WeatherEntity data
      * @throws JSONException If JSON data cannot be properly parsed
      */
     @Nullable

@@ -16,7 +16,7 @@
   -->
 
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  - This layout displays today's primary weather information, such as the date, an icon and      -
+  - This layout displays today's primary WeatherEntity information, such as the date, an icon and      -
   - description, and the high and low temperature.                                               -
   -                                                                                              -
   - Although this layout is very similar to primary_weather_info.xml, we decided to create two   -
@@ -72,7 +72,7 @@
         app:layout_constraintRight_toRightOf="parent"
         tools:text="Today, April 03"/>
 
-    <!-- Icon indicating weather condition -->
+    <!-- Icon indicating WeatherEntity condition -->
     <ImageView
         android:id="@+id/weather_icon"
         android:layout_width="96dp"
@@ -84,7 +84,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/art_clouds"/>
 
-    <!-- Text that describes weather condition -->
+    <!-- Text that describes WeatherEntity condition -->
     <TextView
         android:id="@+id/weather_description"
         android:layout_width="wrap_content"

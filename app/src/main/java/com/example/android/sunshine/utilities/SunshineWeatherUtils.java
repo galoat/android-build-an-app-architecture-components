@@ -21,9 +21,9 @@ import android.util.Log;
 import com.example.android.sunshine.R;
 
 /**
- * Contains useful utilities for displaying weather forecasts, such as conversion between Celsius
+ * Contains useful utilities for displaying WeatherEntity forecasts, such as conversion between Celsius
  * and Fahrenheit, from kph to mph, and from degrees to NSEW.  It also contains the mapping of
- * weather condition codes in OpenWeatherMap to strings.  These strings are defined in
+ * WeatherEntity condition codes in OpenWeatherMap to strings.  These strings are defined in
  * res/values/strings.xml
  */
 public final class SunshineWeatherUtils {
@@ -84,13 +84,13 @@ public final class SunshineWeatherUtils {
     }
 
     /**
-     * Helper method to provide the string according to the weather
+     * Helper method to provide the string according to the WeatherEntity
      * condition id returned by the OpenWeatherMap call.
      *
      * @param context   Android context
      * @param weatherId from OpenWeatherMap API response
      *                  See http://openweathermap.org/weather-conditions for a list of all IDs
-     * @return String for the weather condition, null if no relation is found.
+     * @return String for the WeatherEntity condition, null if no relation is found.
      */
     public static String getStringForWeatherCondition(Context context, int weatherId) {
         int stringId;
@@ -263,7 +263,7 @@ public final class SunshineWeatherUtils {
     }
 
     /**
-     * Helper method to provide the icon resource id according to the weather condition id returned
+     * Helper method to provide the icon resource id according to the WeatherEntity condition id returned
      * by the OpenWeatherMap call. This method is very similar to
      * <p>
      * {@link #getLargeArtResourceIdForWeatherCondition(int)}.
@@ -278,7 +278,7 @@ public final class SunshineWeatherUtils {
     public static int getSmallArtResourceIdForWeatherCondition(int weatherId) {
 
         /*
-         * Based on weather code data for Open Weather Map.
+         * Based on WeatherEntity code data for Open Weather Map.
          */
         if (weatherId >= 200 && weatherId <= 232) {
             return R.drawable.ic_storm;
@@ -315,7 +315,7 @@ public final class SunshineWeatherUtils {
     }
 
     /**
-     * Helper method to provide the art resource ID according to the weather condition ID returned
+     * Helper method to provide the art resource ID according to the WeatherEntity condition ID returned
      * by the OpenWeatherMap call. This method is very similar to
      * <p>
      * {@link #getSmallArtResourceIdForWeatherCondition(int)}.
@@ -330,7 +330,7 @@ public final class SunshineWeatherUtils {
     public static int getLargeArtResourceIdForWeatherCondition(int weatherId) {
 
         /*
-         * Based on weather code data for Open Weather Map.
+         * Based on WeatherEntity code data for Open Weather Map.
          */
         if (weatherId >= 200 && weatherId <= 232) {
             return R.drawable.art_storm;
